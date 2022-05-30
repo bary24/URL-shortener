@@ -74,4 +74,16 @@ if(!device.os.name||device.os.name=="Windows"||device.os.name==""){
 })
 
 
+app.put("/shortlinks/:shortlink", async function(req,res){
+    const shortlink=req.params.shortlink;
+    if(!shortlink){
+        res.status(400).json({
+            error:"invalid request"
+        })
+    }
+    await Link.findOneAndUpdate({short:shortlink}, {short:req.body.updatedLink});
+    res.json("updated successfully ! ");
+})
+
+
 
