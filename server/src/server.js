@@ -22,13 +22,20 @@ startServer();
 
 
 
-app.get("/",async function(req,res){
-  const shortLinks=await Link.find({});
+app.get("/shortlinks",async function(req,res){
+    const shortLinks=await Link.find({});
+    if(!shortLinks){
+        res.status(404).json({
+            error:"No records available"
+        });
+    }
+    
+ 
   res.json(shortLinks);
   console.log(shortLinks);
 });
 
-app.post("/short",async function(req,res){
+app.post("/shortlinks",async function(req,res){
     console.log(req.body);
     const record=  new Link({
         webFull:req.body.webUrl,
@@ -42,7 +49,7 @@ app.post("/short",async function(req,res){
 
 });
 
-app.get("/:shortlink", async function(req,res){
+app.get("/shortlinks/:shortlink", async function(req,res){
     const shortLink=req.params.shortlink;
     const data= await Link.findOne({short:shortLink});
     if(!data){

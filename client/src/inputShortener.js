@@ -16,12 +16,12 @@ const InputShortener=()=>{
     
     const postData =async function (){
         const URL="http://localhost:8000";
-        const result =await axios.post("http://localhost:8000/short",
+        const result =await axios.post("http://localhost:8000/shortlinks",
         {webUrl:webUrl,
         androidUrl:androidUrl,
     iosUrl:iosUrl}
         );
-        setShortUrl(`${URL}/${result.data}`);
+        setShortUrl(`${URL}/shortlinks/${result.data}`);
     
         }
 
