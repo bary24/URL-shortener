@@ -17,7 +17,7 @@ const linksSchema=mongoose.Schema({
     short:{
         type:String,
         required:true,
-        default:nanoid(7)
+        default:()=>nanoid(5)
 
     }
 

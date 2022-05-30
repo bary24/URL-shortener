@@ -23,17 +23,17 @@ startServer();
 
 
 app.get("/",async function(req,res){
-    const shortUrl=await Link.findOne({},{_id:0});
-    console.log(shortUrl);
-    res.render("index",
-    {testVariable:shortUrl.short})
+  const shortLinks=await Link.find({});
+  res.json(shortLinks);
+  console.log(shortLinks);
 });
 
 app.post("/short",async function(req,res){
     console.log(req.body);
     const record=  new Link({
         webFull:req.body.webUrl,
-        androidFull:req.body.androidUrl
+        androidFull:req.body.androidUrl,
+        iosFull:req.body.iosUrl
     })
 
     await record.save();

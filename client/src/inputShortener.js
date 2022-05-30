@@ -4,6 +4,7 @@ const InputShortener=()=>{
     const [webUrl,setWebUrl]=useState("");
     const [androidUrl,setAndroidUrl]=useState("");
     const [shortUrl,setShortUrl]=useState("");
+    const [iosUrl,setIosUrl]=useState("");
     console.log(shortUrl);
    
     const handleClick=(e)=>{
@@ -17,7 +18,9 @@ const InputShortener=()=>{
         const URL="http://localhost:8000";
         const result =await axios.post("http://localhost:8000/short",
         {webUrl:webUrl,
-        androidUrl:androidUrl});
+        androidUrl:androidUrl,
+    iosUrl:iosUrl}
+        );
         setShortUrl(`${URL}/${result.data}`);
     
         }
@@ -33,7 +36,8 @@ const InputShortener=()=>{
         value={webUrl} onChange={(e)=>setWebUrl(e.target.value)} id="fullLink"></input>
         <input className="box" type="text" placeholder=" Paste Android full link" value={androidUrl}
         onChange={(e)=>setAndroidUrl(e.target.value)}></input>
-        <input className="box" type="text" placeholder="Paste Ios full link"></input>
+        <input className="box" type="text" placeholder="Paste Ios full link" 
+        value={iosUrl} onChange={(e)=>setIosUrl(e.target.value)}></input>
         
         <button onClick= {handleClick}>Shorten</button>
         </form>
