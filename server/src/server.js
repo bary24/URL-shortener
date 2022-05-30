@@ -1,6 +1,6 @@
 const http=require("http");
 const app=require("./app");
-const connectMongo=require("./services/mongo");
+const {connectMongo}=require("./services/mongo");
 const port=process.env.PORT||8000;
 const server=http.createServer(app);
 const mongoose=require("mongoose");
@@ -17,6 +17,7 @@ await Link.syncIndexes();
     })
 
 }
+
 
 startServer();
 
@@ -44,6 +45,7 @@ app.post("/shortlinks",async function(req,res){
     })
 
     await record.save();
+    res.status(201);
     res.json(record.short);
     
 
@@ -86,4 +88,7 @@ app.put("/shortlinks/:shortlink", async function(req,res){
 })
 
 
+module.exports={
+    startServer
+}
 
