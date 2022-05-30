@@ -3,12 +3,19 @@
 }
 
 .container{
-    height:80vh;
+    height:40%;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
+    margin-top: 10%;
 }
+
+.inputContainer p{
+    text-align: center;
+    justify-content:center;
+}
+
 
 .inputContainer h1{
     font-family: "Playfair Display" ,serif;
@@ -224,7 +231,7 @@ undefined
     align-items:center; 
     justify-content:center;
     padding:0.5rem 1rem;
-    
+
 }  
 
 .result p{

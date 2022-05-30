@@ -1,9 +1,16 @@
 import {useEffect,useState} from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
-
-const LinkResult=()=>{
+const LinkResult=({webUrl})=>{
 const[shortenLink,setShortenLink]=useState("Hello world");
 const[copied,setCopied]=useState(false);
+const [loading,setLoading]=useState(false);
+
+
+
+
+
+
+
 useEffect(()=>{
 const timer=setTimeout(()=>{
 setCopied(false);
@@ -29,6 +36,9 @@ onCopy={()=>setCopied(true)}
 
 )
 }
+
+
+
 
 
 

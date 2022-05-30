@@ -30,12 +30,14 @@ app.get("/",async function(req,res){
 });
 
 app.post("/short",async function(req,res){
-    const record=new Link({
-        full:req.body.url
+    console.log(req.body);
+    const record=  new Link({
+        webFull:req.body.webUrl,
+        androidFull:req.body.androidUrl
     })
 
     await record.save();
-    res.send("done");
+    res.json(record.short);
     
 
 });
@@ -46,7 +48,7 @@ app.get("/:shortlink", async function(req,res){
     if(!data){
         res.status(404);
     }
-    await data.save();
+    // await data.save();
 const userAgent=req.headers["user-agent"];
 const device = deviceDetector.parse(userAgent);
 console.log(device.os.name);
@@ -58,9 +60,9 @@ console.log(device.os.name);
     if(device.os.name=="iOS"){
         res.redirect(data.iosFull);
     }
-    else{
-        res.redirect(data.webFull);
-    }
+if(!device.os.name||device.os.name=="Windows"||device.os.name==""){
+    res.redirect(data.webFull);
+}
 
 })
 

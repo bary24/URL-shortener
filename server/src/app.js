@@ -1,9 +1,12 @@
 const express=require("express");
 const cors=require("cors");
+const bodyParser=require("body-parser");
 const path=require("path");
 const morgan=require("morgan");
 const app=express();
-app.use(express.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({
+    extended: true
+  }));
 app.use(cors({
     origin:"http://localhost:3000"
 }));
