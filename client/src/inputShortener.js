@@ -43,7 +43,7 @@ const InputShortener=()=>{
         </form>
         
          </div>
-         <p> ShortURL: {shortUrl}</p> 
+         <p> Short URL  :  {shortUrl}</p> 
         
         </div>
     );

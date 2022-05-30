@@ -12,8 +12,10 @@
 }
 
 .inputContainer p{
-    text-align: center;
-    justify-content:center;
+    text-align: left;
+    /* justify-content:center; */
+    background-color: white;
+    height:30px;
 }
 
 
